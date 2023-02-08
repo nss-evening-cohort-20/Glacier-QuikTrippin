@@ -37,7 +37,7 @@ public class StoreBuilder
     {
         StoreRepository StoreDB = new StoreRepository();
 
-        Console.Write("Please enter the new store number: ");
+        Console.Write("Please enter the new store number: ");  
         bool inputWasParsed = int.TryParse(Console.ReadLine(), out int parsedInput);
         bool storeNumberAlreadyTaken = StoreDB.CheckIfStoreNumberExists(parsedInput);
         while (!inputWasParsed || parsedInput > 1000 || parsedInput <= 0 || storeNumberAlreadyTaken) 
@@ -66,12 +66,12 @@ public class StoreBuilder
     }
     private bool AddAnotherStore()
     {
-        Console.Write("Would you like to add another store? (Y/N)");
+        Console.Write("Would you like to add another store? Enter Y to add another store and N to return to District Dashboard)");
         string response = Console.ReadLine();
         while (String.IsNullOrWhiteSpace(response) || response != "Y" && response != "N")
         {
             Console.Clear();
-            Console.Write("Would you like to add another store? Enter Y or N.");
+            Console.Write("Would you like to add another store? Enter Y to add another store and N to return to District Dashboard");
             response = Console.ReadLine();
 
         }

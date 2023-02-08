@@ -19,7 +19,7 @@ namespace Glacier_QuikTrippin;
     {
         _stores.Add(store);
     }
-
+     
     public bool CheckIfStoreNumberExists(int num)
     {
         List<Store> StoreWithSameNumber = _stores.Where(store => store.Number == num).ToList();
