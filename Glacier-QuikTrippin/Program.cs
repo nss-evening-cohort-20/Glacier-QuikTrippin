@@ -1,2 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace Glacier_QuikTrippin
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var appBuilder = new AppBuilder();
+            appBuilder.Run();
+        }
+    }
+}
