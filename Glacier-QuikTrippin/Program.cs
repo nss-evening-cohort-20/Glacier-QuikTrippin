@@ -25,7 +25,6 @@ while (true)
 {
 
 }
-using Glacier_QuikTrippin;
 
 //Commands for accessing store buillder and Store Sales Editor
 
