@@ -6,7 +6,7 @@ using Glacier_QuikTrippin;
 #region Testing Store Builder and Sales Number Editor
 //StoreRepository repo = new StoreRepository();
 //StoreBuilder bldr = new StoreBuilder();
-//bldr.Run();
+//bldr.Run(); 
 
 //StoreSalesEditor edt = new StoreSalesEditor();
 //Store currentStore = repo.GetStoreByNumber(250);
