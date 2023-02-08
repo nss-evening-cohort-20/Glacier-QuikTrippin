@@ -27,4 +27,8 @@ namespace Glacier_QuikTrippin;
         if (StoreWithSameNumber.Count == 0) return false;
         else return true;
     }
+    public Store GetStoreByNumber(int number)
+    {
+        return _stores.FirstOrDefault(s => s.Number == number);
+    }
 }
