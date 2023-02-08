@@ -19,6 +19,7 @@ public class Store
 
     public Store() {
     StoreEmployees= new Dictionary<string, List<int>>();
+        Location = "";
     }
     public void PrintStoreAndLocation()
     {
