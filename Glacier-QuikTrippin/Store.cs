@@ -9,6 +9,7 @@ namespace Glacier_QuikTrippin;
 public class Store
 {
    public int Number { get; set; }
+    public string Location { get; set; }
    public int GasYearly { get; set; }
    public int GasCurrentQuarter { get; set; }
    public int RetailYearly { get; set; }
@@ -18,5 +19,9 @@ public class Store
 
     public Store() {
     StoreEmployees= new Dictionary<string, List<int>>();
+    }
+    public void PrintStoreAndLocation()
+    {
+        Console.WriteLine($"Store Number: {Number}, Location: {Location}");
     }
 }
