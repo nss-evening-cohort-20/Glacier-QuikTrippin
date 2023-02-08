@@ -15,9 +15,11 @@ public class Store
    public int RetailYearly { get; set; }
    public int RetailCurrentQuarter { get;set; }
 
+    //TODO: Replace type int with Employee
     Dictionary<string, List<int>>  StoreEmployees{ get;}
 
     public Store() {
+        //TODO: Replace type int with Employee
     StoreEmployees= new Dictionary<string, List<int>>();
         Location = "";
     }
