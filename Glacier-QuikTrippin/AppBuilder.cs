@@ -76,19 +76,38 @@ namespace Glacier_QuikTrippin
                 while (districtDashboardRunning)
                 {
                     int userChoice = districtDashboard.Run(districtManager);
+                    int storeCount = storeRepo.GetStoreCount();
                     if (userChoice == 0)
                     {
-                        bldr.Run();
+                        bldr.Run(districtManager);
+                    }
+                    else if (userChoice == 1 && storeCount > 0)
+                    {
+                        bool inputParsed = false;
+                        bool storeFound = false;
+                        do
+                        {
+
+                            Console.Clear();
+                            Title.DisplayTitle();
+                            Console.WriteLine("Enter Store Number: ");
+                            string userInput = Console.ReadLine();
+                           // if (userInput == "X") break;
+                            inputParsed = int.TryParse(userInput, out userSelectedStoreNumber);
+                            storeFound = storeRepo.CheckIfStoreNumberExists(userSelectedStoreNumber);
+                        } while (!inputParsed || !storeFound);
+
+                    
+                        districtDashboardRunning = false;
+                        storeDashboardRunning = true;
                     }
                     else if (userChoice == 1)
                     {
-
                         Console.Clear();
                         Title.DisplayTitle();
-                        Console.WriteLine("Enter Store Number: ");
-                        int.TryParse(Console.ReadLine(), out userSelectedStoreNumber);
-                        districtDashboardRunning = false;
-                        storeDashboardRunning = true;
+                        Console.WriteLine("No Stores! Press enter and add a store to continue!");
+                        Console.ReadLine();
+
                     }
                     else if (userChoice == 3)
                     {
