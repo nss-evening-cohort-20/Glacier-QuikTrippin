@@ -19,7 +19,7 @@ namespace Glacier_QuikTrippin
             int dashboardInputOption;
             bool isDashboardOperationValid;
             bool isDashboardInputValid;
-            bool stopApplication = true;
+            bool stopApplication = false;
 
             IRepository<IEmployee> employeeRepository = new EmployeeRepository();
 
@@ -98,7 +98,7 @@ namespace Glacier_QuikTrippin
                             break;
                         case 4:
                             Console.WriteLine("Going Back to Main");
-                            stopApplication = false;
+                            stopApplication = true;
                             break;
                         default:
                             isDashboardInputValid = false;
@@ -112,7 +112,7 @@ namespace Glacier_QuikTrippin
                     Console.WriteLine("Please enter a valid option");
                 }
 
-            } while (stopApplication);
+            } while (!stopApplication);
 
         }
     }
