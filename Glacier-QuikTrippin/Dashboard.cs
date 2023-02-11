@@ -66,8 +66,8 @@ namespace Glacier_QuikTrippin
                     switch (dashboardInputOption)
                     {
                         case 1:
-                            Console.WriteLine("Employee Id:");
-                            var id = int.Parse(Console.ReadLine());
+                            //Console.WriteLine("Employee Id:");
+                            //var id = int.Parse(Console.ReadLine());
                             Console.WriteLine("Name:");
                             var name = Console.ReadLine();
                             Console.WriteLine("Role:");
@@ -77,20 +77,20 @@ namespace Glacier_QuikTrippin
                             Console.WriteLine("Sales:");
                             var sales = double.Parse(Console.ReadLine());
 
-                            IEmployee employee = new Employee(id:id,name:name,role:role,rate:rate,sales:sales);
+                            IEmployee employee = new Employee(storeId:storeNumber,name:name,role:role,rate:rate,sales:sales);
                             employeeRepository.Add(employee);
 
                             break;
                         case 2:
                             Console.WriteLine($"Employees list for store # {storeNumber}");
-                            Console.WriteLine("-----------------------------------");
-                            var employeeList = employeeRepository.GetAll();
+                            Console.WriteLine("-----------------------------------------------------------------------------------------------");
+                            var employeeList = employeeRepository.GetAll().Where(x => x.StoreId == storeNumber).ToList();
 
                             foreach (var item in employeeList)
                             {
-                                Console.WriteLine($"Id: {item.Id} Name: {item.Name} Role: {item.Role} Rate: {item.Rate} Sales: {item.Sales}");
+                                Console.WriteLine(item);
                             }
-                            Console.WriteLine("-----------------------------------");
+                            Console.WriteLine("-----------------------------------------------------------------------------------------------");
 
                             break;
                         case 3:

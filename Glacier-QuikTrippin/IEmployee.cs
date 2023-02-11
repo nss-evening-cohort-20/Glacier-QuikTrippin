@@ -11,6 +11,8 @@ namespace Glacier_QuikTrippin
         string Name { get; set; }
         int Id { get; set; }
 
+        int StoreId { get; set; }
+
         string Role { get; set; }
         double Rate { get; set; }
         double Sales { get; set; }
