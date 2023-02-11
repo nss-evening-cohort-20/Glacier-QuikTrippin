@@ -13,8 +13,11 @@ public class Menu
         _options = options;
         _selectedIndex = 0;
     }
-    private void DisplayOptions()
+    private void DisplayOptions(Title title)
     {
+        title.DisplayTitle();
+        Console.WriteLine();
+        Console.WriteLine();
         Console.WriteLine(_prompt);
         for(int i =0; i< _options.Length; i++)
         {
@@ -39,13 +42,14 @@ public class Menu
         Console.ResetColor();
     }
 
-    public int Run()
+    public int Run(Title title)
     {
         ConsoleKey keyPressed;
         do
         {
-            //Console.Clear();
-            DisplayOptions();
+
+            Console.Clear();
+            DisplayOptions(title);
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             keyPressed= keyInfo.Key;
 
