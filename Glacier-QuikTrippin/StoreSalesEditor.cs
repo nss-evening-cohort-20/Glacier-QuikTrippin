@@ -11,7 +11,8 @@ public class StoreSalesEditor
     public void Run(Store store)
     {
         Console.Clear();
-        int gasYearly = GetIntFromUser("Enter Yearly Gas Sales: $");
+        Title.DisplayTitle();
+        int gasYearly = GetIntFromUser("Enter Yearly Gas Sales : $");
         int gasCurrentQuarter = GetIntFromUser("Enter Gas Sales from the Current Quarter: $");
         int retailYearly = GetIntFromUser("Enter Yearly Retail Sales: $");
         int retailCurrentQuarter = GetIntFromUser("Enter Retail Sales from the Current Quarter: $");
@@ -34,7 +35,6 @@ Retail Current Quarter: ${retailCurrentQuarter}");
         } else
         {
             Console.WriteLine("Cancelled");
-            Console.ReadLine();
         }
 
     }
