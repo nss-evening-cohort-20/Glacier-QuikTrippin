@@ -16,6 +16,7 @@ public class StoreBuilder
         do
         {
             Console.Clear();
+            Title.DisplayTitle();
             Console.WriteLine("Add a Store");
             int storeNumber = GetIntFromUser();
             string location = GetStringFromUser();
