@@ -15,7 +15,7 @@ public class StoreDashboard
   
     string prompt = @$"Store Dashboard: {store.Number}   Location: {store.Location}
 Please use the arrows keys to navigate the menu. Press enter to make a selection.";
-        string[] options = { "Add a New Employee", "Enter Store Sales", "Back to Distric Dashboard" };
+        string[] options = { "Add a New Employee", "Enter Store Sales", "View All Employees", "Back to Distric Dashboard" };
 
         Menu storeDashboardMenu = new Menu(prompt, options);
 
@@ -27,7 +27,9 @@ Please use the arrows keys to navigate the menu. Press enter to make a selection
                 return 0;
             case 1:
                 return 1;//find a way to choose the next thing to run
-            default: return 2;
+            case 2:
+                return 2;
+            default: return 3;
         }
 
 

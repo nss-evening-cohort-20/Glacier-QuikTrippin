@@ -100,6 +100,7 @@ namespace Glacier_QuikTrippin
                 }
 
                 StoreDashboard storeDashboard = new StoreDashboard();
+                IRepository<IEmployee> employeeRepository = new EmployeeRepository();
 
                 while (storeDashboardRunning)
                 {
@@ -110,6 +111,20 @@ namespace Glacier_QuikTrippin
                     if (userChoice == 0)
                     {
                         //if user choice is Add employee, run add employee interfactd
+                        //Console.WriteLine("Employee Id:");
+                        //var id = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Name:");
+                        var name = Console.ReadLine();
+                        Console.WriteLine("Role:");
+                        var role = Console.ReadLine();
+                        Console.WriteLine("Rate:");
+                        var rate = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Sales:");
+                        var sales = double.Parse(Console.ReadLine());
+
+                        IEmployee employee = new Employee(storeId: currentStore.Number, name: name, role: role, rate: rate, sales: sales);
+                        employeeRepository.Add(employee);
+
                     }
                     else if (userChoice == 1)
                     {
@@ -118,6 +133,18 @@ namespace Glacier_QuikTrippin
                         StoreSalesEditor edt = new StoreSalesEditor();
 
                         edt.Run(currentStore);
+                    }
+                    else if (userChoice == 2)
+                    {
+                        Console.WriteLine($"Employees list for store # {currentStore.Number}");
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------");
+                        var employeeList = employeeRepository.GetAll().Where(x => x.StoreId == currentStore.Number).ToList();
+
+                        foreach (var item in employeeList)
+                        {
+                            Console.WriteLine(item);
+                        }
+                        Console.WriteLine("-----------------------------------------------------------------------------------------------");
                     }
                     else
                     {
