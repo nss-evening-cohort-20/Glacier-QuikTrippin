@@ -31,4 +31,8 @@ namespace Glacier_QuikTrippin;
     {
         return _stores.FirstOrDefault(s => s.Number == number);
     }
+    public int GetStoreCount()
+    {
+        return _stores.Count;
+    }
 }
