@@ -69,19 +69,35 @@ while (appRunning)
     while (districtDashboardRunning)
     {
         int userChoice = districtDashboard.Run(districtManager);
+        int storeCount = storeRepo.GetStoreCount();
         if (userChoice == 0)
         {
             bldr.Run();
         }
-        else if (userChoice == 1)
+        else if (userChoice == 1 && storeCount > 0)
         {
+            bool inputParsed = false;
+            bool storeFound = false;
+            do
+            {
 
             Console.Clear();
             Title.DisplayTitle();
             Console.WriteLine("Enter Store Number: ");
-            int.TryParse(Console.ReadLine(), out userSelectedStoreNumber);
+            inputParsed = int.TryParse(Console.ReadLine(), out userSelectedStoreNumber);
+            storeFound = storeRepo.CheckIfStoreNumberExists(userSelectedStoreNumber);
+            } while (!inputParsed || !storeFound);
+
             districtDashboardRunning = false;
             storeDashboardRunning = true;    
+        }
+        else if (userChoice == 1)
+        {
+            Console.Clear();
+            Title.DisplayTitle();
+            Console.WriteLine("No Stores! Press enter and add a store to continue!");
+            Console.ReadLine();
+
         }
         else if (userChoice == 3)
         {
