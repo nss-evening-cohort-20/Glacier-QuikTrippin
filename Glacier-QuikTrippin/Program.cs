@@ -17,6 +17,7 @@ using System;
 
 
 #region Testing Store Dashboard and App Flow
+DistrictReport districtReport = new DistrictReport();
 
 ManagerDashboard managerDashbaord = new ManagerDashboard();
 PasswordDashboard passwordDashboard = new PasswordDashboard();
@@ -24,8 +25,9 @@ DistrictDashboard districtDashboard = new DistrictDashboard();
 StoreRepository storeRepo = new StoreRepository();
 StoreBuilder bldr = new StoreBuilder();
 
-bool managerDashboardrunning = false;
+bool managerDashboardrunning = true;
 bool passwordDashboardRunning = false;
+bool inccorectPasswordDashbardRunning = false;
 bool districtDashboardRunning = false;
 bool storeDashboardRunning = false;
 bool appRunning = true;
@@ -36,7 +38,7 @@ string districtManager ="";
 
 while (appRunning)
 {
-    managerDashboardrunning= true;
+    //managerDashboardrunning= true;
 
     while (managerDashboardrunning)
     {
@@ -45,10 +47,11 @@ while (appRunning)
         {
             districtManager= userChoice;
             managerDashboardrunning = false;
+            passwordDashboardRunning= true;
         };
     }
 
-    passwordDashboardRunning= true;
+    //passwordDashboardRunning= true;
 
     while (passwordDashboardRunning)
     {
@@ -56,11 +59,36 @@ while (appRunning)
         if(userChoice != 0)
         {
             passwordDashboardRunning = false;
+            districtDashboardRunning= true;
+        }
+        else
+        {
+            passwordDashboardRunning= false;
+            inccorectPasswordDashbardRunning = true;
+        }
+    }
+
+    while (inccorectPasswordDashbardRunning)
+    {
+       int userChoice = passwordDashboard.Run();
+        if(userChoice == 0)
+        {
+            passwordDashboardRunning = true;
+            inccorectPasswordDashbardRunning = false;
+            districtDashboardRunning = false;
+            storeDashboardRunning= false;
+        }
+        else
+        {
+            inccorectPasswordDashbardRunning= false;
+            districtDashboardRunning= false;
+            storeDashboardRunning= false;
+            managerDashboardrunning = true;
         }
     }
 
 
-    districtDashboardRunning = true;
+    //districtDashboardRunning = true;
     //topLevelMenuRunning = false;
     //districtDashboardRunning = true;
 
@@ -83,12 +111,18 @@ while (appRunning)
             districtDashboardRunning = false;
             storeDashboardRunning = true;    
         }
+        else if (userChoice == 2)
+        {
+            districtReport.Report(storeRepo);
+            Console.ReadKey(true);
+        }
         else if (userChoice == 3)
         {
             Console.Clear(); 
             Title.DisplayTitle();
             districtDashboardRunning= false;
             storeDashboardRunning = false;
+            managerDashboardrunning = true;
         }
     }
 
@@ -115,6 +149,8 @@ while (appRunning)
         else
         {
             storeDashboardRunning = false;
+            managerDashboardrunning= false;
+            districtDashboardRunning = true;
         }
     }
 

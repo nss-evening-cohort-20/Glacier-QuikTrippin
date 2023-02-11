@@ -44,6 +44,7 @@ public class StoreBuilder
         while (!inputWasParsed || parsedInput > 1000 || parsedInput <= 0 || storeNumberAlreadyTaken) 
         {
             Console.Clear();
+            Title.DisplayTitle();
             Console.Write("Please enter the stores number (1-1000): ");
             inputWasParsed = int.TryParse(Console.ReadLine(), out parsedInput);
 
@@ -59,6 +60,7 @@ public class StoreBuilder
         while (String.IsNullOrWhiteSpace(city))
         {
             Console.Clear();
+            Title.DisplayTitle();
             Console.Write("Please enter the City Location of the new store: ");
             city = Console.ReadLine();
 
@@ -72,6 +74,7 @@ public class StoreBuilder
         while (String.IsNullOrWhiteSpace(response) || response != "Y" && response != "N")
         {
             Console.Clear();
+            Title.DisplayTitle();
             Console.Write("Would you like to add another store? Enter Y to add another store and N to return to District Dashboard");
             response = Console.ReadLine();
 

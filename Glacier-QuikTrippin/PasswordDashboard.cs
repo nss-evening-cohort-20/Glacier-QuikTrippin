@@ -24,10 +24,13 @@ public class PasswordDashboard
         }
     }
 
-    //public void Run()
-    //{
+    public int Run()
+    {
+        string prompt = "Incorrect Password. Please enter a valid 4 digit number.";
+        string[] options = { "TRY AGAIN", "BACK" };
+        Menu passwordDashboard = new Menu(prompt, options);
+        return passwordDashboard.Run();
 
-    //    Menu passwordDashboard = new Menu();
-    //}
+    }
 
 }
