@@ -1,8 +1,8 @@
 ﻿namespace Glacier_QuikTrippin;
 
-public class Title
+public static class Title
 {
-    private string _title = @"
+    private static string _title = @"
  -------------------------------------------------------------------------------------------
 |   ________  ___  ___  ___  ________  ___  __    _________  ________  ___  ________        |
 |  |\   __  \|\  \|\  \|\  \|\   ____\|\  \|\  \ |\___   ___\\   __  \|\  \|\   __  \       |
@@ -16,10 +16,13 @@ public class Title
 |                                                                                           |
 |                     CREATED BY: GANESH BABU, JEREMY WHITE, & ROBERT STROUD                |
  -------------------------------------------------------------------------------------------";
+    private static string _subTitle = "Management Systems";
+    private static string _authors = "Created By: Ganesh Babu, Jeremy White, & Robert Stroud";
 
-    public void DisplayTitle()
+    public static void DisplayTitle()
     {
-        Console.WriteLine(_title);
+        Console.WriteLine(_title);     
+        Console.WriteLine("");
     }
 
 }
