@@ -48,14 +48,18 @@ namespace Glacier_QuikTrippin
                 while (managerDashboardrunning)
                 {
                     string userChoice = managerDashbaord.Run();
-                    if (userChoice != "")
+                    if (userChoice != "" && userChoice != "EXIT")
                     {
                         districtManager = userChoice;
                         managerDashboardrunning = false;
-                    };
+                passwordDashboardRunning = true;
+                    } else
+                    {
+                        managerDashboardrunning = false;
+                        appRunning = false;
+                    }
                 }
 
-                passwordDashboardRunning = true;
 
                 while (passwordDashboardRunning)
                 {
@@ -63,11 +67,11 @@ namespace Glacier_QuikTrippin
                     if (userChoice != 0)
                     {
                         passwordDashboardRunning = false;
+                districtDashboardRunning = true;
                     }
                 }
 
 
-                districtDashboardRunning = true;
                 //topLevelMenuRunning = false;
                 //districtDashboardRunning = true;
 
