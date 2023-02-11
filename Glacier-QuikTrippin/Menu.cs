@@ -16,6 +16,7 @@ public class Menu
     private void DisplayOptions()
     {
         Console.WriteLine(_prompt);
+        Console.WriteLine();
         for(int i =0; i< _options.Length; i++)
         {
             string currentOption = _options[i];

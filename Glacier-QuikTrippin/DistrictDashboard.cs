@@ -11,7 +11,9 @@ public class DistrictDashboard
     public int Run(string districtManager)
     {
         Console.WriteLine($"Welcome {districtManager}");
-        string prompt = "Please use the arrows keys to navigate the menu. Press enter to make a selection.";
+        string prompt = @$"Welcome {districtManager}
+
+Please use the arrows keys to navigate the menu. Press enter to make a selection.";
         string[] options = { "Add a Store", "Store Dashboard", "Generate District Report", "Back to District Selection" };
 
         Menu DistrictDashboardMenu = new Menu(prompt, options);
