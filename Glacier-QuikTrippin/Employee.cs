@@ -8,30 +8,20 @@ namespace Glacier_QuikTrippin
 {
     internal class Employee : IEmployee
     {
-        public string Name => throw new NotImplementedException();
+        public string Name { get; set; }
+        public int Id { get; set; }
+        public string Role { get; set; }
+        public double Rate { get; set; }
+        public double Sales { get; set; }
 
-        public int Id => throw new NotImplementedException();
-
-        public double rate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public double sales { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public string role => throw new NotImplementedException();
-
-        string IEmployee.role { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public void Add(IEmployee employee)
+        public Employee(int id, string name, string role, double rate, double sales) 
         {
-            throw new NotImplementedException();
+            Id= id;
+            Name= name;
+            Role= role;
+            Rate= rate;
+            Sales= sales;
         }
 
-        public void Delete(IEmployee employee)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(IEmployee employee)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

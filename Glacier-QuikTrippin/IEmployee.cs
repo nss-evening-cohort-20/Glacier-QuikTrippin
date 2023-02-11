@@ -8,15 +8,12 @@ namespace Glacier_QuikTrippin
 {
     internal interface IEmployee
     {
-        string Name { get; }
-        int Id { get; }
+        string Name { get; set; }
+        int Id { get; set; }
 
-        string role { get; set; }
-        double rate { get; set; }
-        double sales { get; set; }
+        string Role { get; set; }
+        double Rate { get; set; }
+        double Sales { get; set; }
 
-        void Add(IEmployee employee);
-        void Update(IEmployee employee);
-        void Delete(IEmployee employee);
     }
 }
