@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,15 @@ namespace Glacier_QuikTrippin;
     {
         return _stores;
     }
+    public StoreRepository()
+    {
+       _stores =  JsonConvert.DeserializeObject<List<Store>>((File.ReadAllText(@"C:\Users\Jeremy White\Workspace E20\Glacier-QuikTrippin\Glacier-QuikTrippin\database\stores.json")));   }
 
     public void AddStore(Store store)
     {
         _stores.Add(store);
+        // serialize JSON to a string and then write string to a file
+        File.WriteAllText(@"C:\Users\Jeremy White\Workspace E20\Glacier-QuikTrippin\Glacier-QuikTrippin\database\stores.json", JsonConvert.SerializeObject(_stores.ToArray()));
     }
      
     public bool CheckIfStoreNumberExists(int num)
@@ -30,5 +36,19 @@ namespace Glacier_QuikTrippin;
     public Store GetStoreByNumber(int number)
     {
         return _stores.FirstOrDefault(s => s.Number == number);
+    }
+
+    public void updateStore(Store store)
+    {
+        List<Store> copyOfStores = _stores;
+        int currentStoreIndex = copyOfStores.FindIndex(s => s.Number == store.Number);
+
+        copyOfStores[currentStoreIndex] = store;
+
+        _stores= copyOfStores;
+        
+
+        File.WriteAllText(@"C:\Users\Jeremy White\Workspace E20\Glacier-QuikTrippin\Glacier-QuikTrippin\database\stores.json", JsonConvert.SerializeObject(_stores.ToArray()));
+
     }
 }
