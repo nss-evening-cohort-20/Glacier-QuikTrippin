@@ -44,7 +44,8 @@ public class Menu
         ConsoleKey keyPressed;
         do
         {
-            //Console.Clear();
+            Console.Clear();
+            Title.DisplayTitle();
             DisplayOptions();
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
             keyPressed= keyInfo.Key;
