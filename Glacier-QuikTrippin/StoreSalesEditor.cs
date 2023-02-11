@@ -10,6 +10,7 @@ public class StoreSalesEditor
 {
     public void Run(Store store)
     {
+        StoreRepository storeRepository = new StoreRepository();
         Console.Clear();
         Title.DisplayTitle();
         int gasYearly = GetIntFromUser("Enter Yearly Gas Sales : $");
@@ -30,7 +31,9 @@ Retail Current Quarter: ${retailCurrentQuarter}");
             store.GasCurrentQuarter = gasCurrentQuarter;
             store.RetailYearly= retailYearly;
             store.RetailCurrentQuarter = retailCurrentQuarter;
-            Console.WriteLine("store updated");
+            Console.WriteLine("store updated. Press Enter to Continue");
+            //updates JSON
+            storeRepository.updateStore(store);
             Console.ReadLine();
         } else
         {
