@@ -24,7 +24,7 @@ namespace Glacier_QuikTrippin
             }
             else
             {
-                throw new ArgumentException("invalid employee object to cannot add");
+                throw new ArgumentException("invalid employee object cannot add");
             }
         }
 
