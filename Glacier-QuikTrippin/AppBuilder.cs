@@ -133,20 +133,10 @@ namespace Glacier_QuikTrippin
                     int userChoice = storeDashboard.Run(currentStore);
                     if (userChoice == 0)
                     {
-                        //if user choice is Add employee, run add employee interfactd
-                        //Console.WriteLine("Employee Id:");
-                        //var id = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Name:");
-                        var name = Console.ReadLine();
-                        Console.WriteLine("Role:");
-                        var role = Console.ReadLine();
-                        Console.WriteLine("Rate:");
-                        var rate = double.Parse(Console.ReadLine());
-                        Console.WriteLine("Sales:");
-                        var sales = double.Parse(Console.ReadLine());
 
-                        IEmployee employee = new Employee(storeId: currentStore.Number, name: name, role: role, rate: rate, sales: sales);
-                        employeeRepository.Add(employee);
+                        EmployeeUI employeeUI = new EmployeeUI(currentStore.Number);
+
+                        employeeRepository.Add(employeeUI.RenderAddEmployee());
 
                     }
                     else if (userChoice == 1)
@@ -159,15 +149,10 @@ namespace Glacier_QuikTrippin
                     }
                     else if (userChoice == 2)
                     {
-                        Console.WriteLine($"Employees list for store # {currentStore.Number}");
-                        Console.WriteLine("-----------------------------------------------------------------------------------------------");
-                        var employeeList = employeeRepository.GetAll().Where(x => x.StoreId == currentStore.Number).ToList();
+                        EmployeeUI employeeUI = new EmployeeUI(currentStore.Number);
 
-                        foreach (var item in employeeList)
-                        {
-                            Console.WriteLine(item);
-                        }
-                        Console.WriteLine("-----------------------------------------------------------------------------------------------");
+                        employeeUI.RenderViewAllEmployees(employeeRepository);
+
                     }
                     else
                     {
