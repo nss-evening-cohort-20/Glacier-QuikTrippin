@@ -48,14 +48,18 @@ namespace Glacier_QuikTrippin
                 while (managerDashboardrunning)
                 {
                     string userChoice = managerDashbaord.Run();
-                    if (userChoice != "")
+                    if (userChoice != "" && userChoice != "EXIT")
                     {
                         districtManager = userChoice;
                         managerDashboardrunning = false;
-                    };
+                passwordDashboardRunning = true;
+                    } else
+                    {
+                        managerDashboardrunning = false;
+                        appRunning = false;
+                    }
                 }
 
-                passwordDashboardRunning = true;
 
                 while (passwordDashboardRunning)
                 {
@@ -63,11 +67,11 @@ namespace Glacier_QuikTrippin
                     if (userChoice != 0)
                     {
                         passwordDashboardRunning = false;
+                districtDashboardRunning = true;
                     }
                 }
 
 
-                districtDashboardRunning = true;
                 //topLevelMenuRunning = false;
                 //districtDashboardRunning = true;
 
@@ -76,19 +80,38 @@ namespace Glacier_QuikTrippin
                 while (districtDashboardRunning)
                 {
                     int userChoice = districtDashboard.Run(districtManager);
+                    int storeCount = storeRepo.GetStoreCount();
                     if (userChoice == 0)
                     {
-                        bldr.Run();
+                        bldr.Run(districtManager);
+                    }
+                    else if (userChoice == 1 && storeCount > 0)
+                    {
+                        bool inputParsed = false;
+                        bool storeFound = false;
+                        do
+                        {
+
+                            Console.Clear();
+                            Title.DisplayTitle();
+                            Console.WriteLine("Enter Store Number: ");
+                            string userInput = Console.ReadLine();
+                           // if (userInput == "X") break;
+                            inputParsed = int.TryParse(userInput, out userSelectedStoreNumber);
+                            storeFound = storeRepo.CheckIfStoreNumberExists(userSelectedStoreNumber);
+                        } while (!inputParsed || !storeFound);
+
+                    
+                        districtDashboardRunning = false;
+                        storeDashboardRunning = true;
                     }
                     else if (userChoice == 1)
                     {
-
                         Console.Clear();
                         Title.DisplayTitle();
-                        Console.WriteLine("Enter Store Number: ");
-                        int.TryParse(Console.ReadLine(), out userSelectedStoreNumber);
-                        districtDashboardRunning = false;
-                        storeDashboardRunning = true;
+                        Console.WriteLine("No Stores! Press enter and add a store to continue!");
+                        Console.ReadLine();
+
                     }
                     else if (userChoice == 3)
                     {

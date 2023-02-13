@@ -8,6 +8,7 @@ namespace Glacier_QuikTrippin;
 
 public class Store
 {
+    public string DistrictManager { get; set; }
    public int Number { get; set; }
     public string Location { get; set; }
    public int GasYearly { get; set; }

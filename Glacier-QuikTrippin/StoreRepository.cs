@@ -31,4 +31,14 @@ namespace Glacier_QuikTrippin;
     {
         return _stores.FirstOrDefault(s => s.Number == number);
     }
+    public int GetStoreCount()
+    {
+        return _stores.Count;
+    }
+
+    public List<Store> GetStoresByDistrictManager(string districtManagerName)
+    {
+        List<Store> filteredStores = _stores.Where(s => s.DistrictManager == districtManagerName).ToList(); 
+        return filteredStores;
+    }
 }

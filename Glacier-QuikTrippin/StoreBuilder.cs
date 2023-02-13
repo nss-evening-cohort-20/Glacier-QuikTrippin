@@ -9,7 +9,7 @@ namespace Glacier_QuikTrippin;
 
 public class StoreBuilder
 {
-    public void Run()
+    public void Run(string currentManager)
     {
         StoreRepository StoreDB = new StoreRepository();
         bool running = true;
@@ -23,6 +23,7 @@ public class StoreBuilder
             Store newStore = new Store();
             newStore.Number= storeNumber;
             newStore.Location = location;
+            newStore.DistrictManager = currentManager;
             StoreDB.AddStore(newStore);
             Console.WriteLine("You Successfully added");
             newStore.PrintStoreAndLocation();
