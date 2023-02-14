@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Glacier_QuikTrippin
 {
-    internal interface IEmployee
+    public interface IEmployee
     {
         string Name { get; set; }
         int Id { get; set; }

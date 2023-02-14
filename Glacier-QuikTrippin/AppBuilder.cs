@@ -24,6 +24,7 @@ namespace Glacier_QuikTrippin
 
 
             #region Testing Store Dashboard and App Flow
+            DistrictReport districtReport = new DistrictReport();
 
             ManagerDashboard managerDashbaord = new ManagerDashboard();
             PasswordDashboard passwordDashboard = new PasswordDashboard();
@@ -31,8 +32,9 @@ namespace Glacier_QuikTrippin
             StoreRepository storeRepo = new StoreRepository();
             StoreBuilder bldr = new StoreBuilder();
 
-            bool managerDashboardrunning = false;
+            bool managerDashboardrunning = true;
             bool passwordDashboardRunning = false;
+            bool inccorectPasswordDashbardRunning = false;
             bool districtDashboardRunning = false;
             bool storeDashboardRunning = false;
             bool appRunning = true;
@@ -43,7 +45,7 @@ namespace Glacier_QuikTrippin
 
             while (appRunning)
             {
-                managerDashboardrunning = true;
+                //managerDashboardrunning = true;
 
                 while (managerDashboardrunning)
                 {
@@ -52,10 +54,11 @@ namespace Glacier_QuikTrippin
                     {
                         districtManager = userChoice;
                         managerDashboardrunning = false;
+                        passwordDashboardRunning = true;
                     };
                 }
 
-                passwordDashboardRunning = true;
+                //passwordDashboardRunning = true;
 
                 while (passwordDashboardRunning)
                 {
@@ -63,15 +66,41 @@ namespace Glacier_QuikTrippin
                     if (userChoice != 0)
                     {
                         passwordDashboardRunning = false;
+                        districtDashboardRunning = true;
+                    }
+                    else
+                    {
+                        passwordDashboardRunning = false;
+                        inccorectPasswordDashbardRunning = true;
                     }
                 }
 
+                while (inccorectPasswordDashbardRunning)
+                {
+                    int userChoice = passwordDashboard.Run();
+                    if (userChoice == 0)
+                    {
+                        passwordDashboardRunning = true;
+                        inccorectPasswordDashbardRunning = false;
+                        districtDashboardRunning = false;
+                        storeDashboardRunning = false;
+                    }
+                    else
+                    {
+                        inccorectPasswordDashbardRunning = false;
+                        districtDashboardRunning = false;
+                        storeDashboardRunning = false;
+                        managerDashboardrunning = true;
+                    }
+                }
 
-                districtDashboardRunning = true;
+                //districtDashboardRunning = true;
                 //topLevelMenuRunning = false;
                 //districtDashboardRunning = true;
 
-
+StoreDashboard storeDashboard = new StoreDashboard();
+                IRepository<IEmployee> employeeRepository = new EmployeeRepository();
+                
 
                 while (districtDashboardRunning)
                 {
@@ -90,17 +119,21 @@ namespace Glacier_QuikTrippin
                         districtDashboardRunning = false;
                         storeDashboardRunning = true;
                     }
+                    else if (userChoice == 2)
+                    {
+                        districtReport.Report(storeRepo, employeeRepository);
+                    }
                     else if (userChoice == 3)
                     {
                         Console.Clear();
                         Title.DisplayTitle();
                         districtDashboardRunning = false;
                         storeDashboardRunning = false;
+                        managerDashboardrunning=true;
                     }
                 }
 
-                StoreDashboard storeDashboard = new StoreDashboard();
-                IRepository<IEmployee> employeeRepository = new EmployeeRepository();
+                
 
                 while (storeDashboardRunning)
                 {
@@ -113,13 +146,15 @@ namespace Glacier_QuikTrippin
                         //if user choice is Add employee, run add employee interfactd
                         //Console.WriteLine("Employee Id:");
                         //var id = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Name:");
+                        Console.Clear();
+                        Title.DisplayTitle();
+                        Console.Write("NAME: ");
                         var name = Console.ReadLine();
-                        Console.WriteLine("Role:");
+                        Console.Write("ROLE: ");
                         var role = Console.ReadLine();
-                        Console.WriteLine("Rate:");
+                        Console.Write("RATE: ");
                         var rate = double.Parse(Console.ReadLine());
-                        Console.WriteLine("Sales:");
+                        Console.Write("SALES: ");
                         var sales = double.Parse(Console.ReadLine());
 
                         IEmployee employee = new Employee(storeId: currentStore.Number, name: name, role: role, rate: rate, sales: sales);
@@ -149,6 +184,8 @@ namespace Glacier_QuikTrippin
                     else
                     {
                         storeDashboardRunning = false;
+                        managerDashboardrunning= false;
+                        districtDashboardRunning = true;
                     }
                 }
 

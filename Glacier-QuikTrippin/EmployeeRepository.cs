@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Glacier_QuikTrippin
 {
-    internal class EmployeeRepository : IRepository<IEmployee>
+    public class EmployeeRepository : IRepository<IEmployee>
     {
 
         static IList<IEmployee> _employees = new List<IEmployee>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Glacier_QuikTrippin
 {
-    internal interface IRepository<T>
+    public interface IRepository<T>
     {
         T Get(int id);
         IList<T> GetAll();

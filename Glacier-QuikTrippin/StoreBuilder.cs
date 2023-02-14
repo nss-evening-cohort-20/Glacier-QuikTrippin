@@ -24,6 +24,7 @@ public class StoreBuilder
             newStore.Number= storeNumber;
             newStore.Location = location;
             StoreDB.AddStore(newStore);
+            Console.WriteLine("-----------------------");
             Console.WriteLine("You Successfully added");
             newStore.PrintStoreAndLocation();
             if (!AddAnotherStore())
@@ -69,13 +70,16 @@ public class StoreBuilder
     }
     private bool AddAnotherStore()
     {
-        Console.Write("Would you like to add another store? Enter Y to add another store and N to return to District Dashboard)");
+        Console.WriteLine();
+        Console.WriteLine("Would you like to add another store?");
+        Console.Write("Y/N: ");
         string response = Console.ReadLine();
         while (String.IsNullOrWhiteSpace(response) || response != "Y" && response != "N")
         {
             Console.Clear();
             Title.DisplayTitle();
-            Console.Write("Would you like to add another store? Enter Y to add another store and N to return to District Dashboard");
+            Console.WriteLine("Would you like to add another store?");
+            Console.Write("Y/N: ");
             response = Console.ReadLine();
 
         }

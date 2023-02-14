@@ -16,11 +16,11 @@ public class Store
    public int RetailCurrentQuarter { get;set; }
 
     //TODO: Replace type int with Employee
-    Dictionary<string, List<int>>  StoreEmployees{ get;}
+    Dictionary<string, List<Employee>>  StoreEmployees{ get;}
 
     public Store() {
         //TODO: Replace type int with Employee
-    StoreEmployees= new Dictionary<string, List<int>>();
+    StoreEmployees= new Dictionary<string, List<Employee>>();
         Location = "";
     }
     public void PrintStoreAndLocation()
